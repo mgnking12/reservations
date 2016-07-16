@@ -68,7 +68,7 @@ app.listen(PORT, function(){
 
 
 
-// Search for Specific Character (or all characters) - provides JSON
+
 app.get('/api/:customer?', function(req, res){
     var chosen = req.params.customer;
     if(chosen){
@@ -92,7 +92,7 @@ app.get('/api/:customer?', function(req, res){
 app.post('/api/new', function(req, res){
 
     var newCustomer = req.body;
-    newcharacter.routeName = newCustomer.name.replace(/\s+/g, '').toLowerCase()
+    newCustomer.routeName = newCustomer.name.replace(/\s+/g, '').toLowerCase()
 
     console.log(newCustomer);
 
