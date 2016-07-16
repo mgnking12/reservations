@@ -54,12 +54,9 @@ app.get('/reserve', function(req, res){
 
 
 //View reservations and wait list
-app.get('/listView', function(req, res){
+app.get('/tables', function(req, res){
     res.sendFile(path.join(__dirname, 'tables.html'));
 })
-
-
-
 
 
 
@@ -70,7 +67,8 @@ app.listen(PORT, function(){
 })
 
 
-// Search for Specific Character (or all characters) - provides JSON
+
+
 app.get('/api/:customer?', function(req, res){
     var chosen = req.params.customer;
     if(chosen){
@@ -87,4 +85,18 @@ app.get('/api/:customer?', function(req, res){
     else{
         res.json(customer);
     }
+})
+
+
+// Create New customer - takes in JSON input
+app.post('/api/new', function(req, res){
+
+    var newCustomer = req.body;
+    newCustomer.routeName = newCustomer.name.replace(/\s+/g, '').toLowerCase()
+
+    console.log(newCustomer);
+
+    characters.push(newCustomer);
+
+    res.json(newCustomer);
 })
