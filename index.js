@@ -92,11 +92,12 @@ app.get('/api/:customer?', function(req, res){
 app.post('/api/new', function(req, res){
 
     var newCustomer = req.body;
-    newCustomer.routeName = newCustomer.name.replace(/\s+/g, '').toLowerCase()
+    console.log(newCustomer);
+    newCustomer.routeName = newCustomer.customerName.replace(/\s+/g, '');
 
     console.log(newCustomer);
 
-    characters.push(newCustomer);
+    customer.push(newCustomer);
 
     res.json(newCustomer);
 })
