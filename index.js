@@ -85,6 +85,27 @@ app.get('/api/:customer?', function(req, res) {
 })
 
 
+
+app.get('/wait/:customer?', function(req, res) {
+    var chosen = req.params.waitList;
+    if (chosen) {
+        console.log(chosen);
+        for (var i = 0; i < waitList.length; i++) {
+
+            if (chosen == waitList[i].routeName) {
+                res.json(waitList[i]);
+                return;
+            }
+        }
+        res.json(false);
+    } else {
+        res.json(waitList);
+    }
+})
+
+
+
+
 // Create New customer - takes in JSON input
 app.post('/api/new', function(req, res) {
 
