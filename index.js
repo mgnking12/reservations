@@ -17,13 +17,13 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 // Star Wars Characters (DATA)
 // =============================================================
-var customers = [
+var customer = [
 
     {
         customerID: "JohnSmith",
         customerName: "John Smith",
         phoneNumber: "55-555-5555",
-        customerEmail: jos@gmail.com
+        customerEmail: "jos@gmail.com"
     }
 ]
 
@@ -32,7 +32,7 @@ var waitList = [
         customerID: "JohnSmith",
         customerName: "John Smith",
         phoneNumber: "55-555-5555",
-        customerEmail: jos@gmail.com
+        customerEmail: "jos@gmail.com"
     }
 ]
 
