@@ -17,13 +17,13 @@ app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
 // Star Wars Characters (DATA)
 // =============================================================
-var customers = [
+var customer = [
 
     {
         customerID: "JohnSmith",
         customerName: "John Smith",
         phoneNumber: "55-555-5555",
-        customerEmail: jos@gmail.com
+        customerEmail: "jos@gmail.com"
     }
 ]
 
@@ -32,7 +32,7 @@ var waitList = [
         customerID: "JohnSmith",
         customerName: "John Smith",
         phoneNumber: "55-555-5555",
-        customerEmail: jos@gmail.com
+        customerEmail: "jos@gmail.com"
     }
 ]
 
@@ -54,12 +54,9 @@ app.get('/reserve', function(req, res){
 
 
 //View reservations and wait list
-app.get('/listView', function(req, res){
+app.get('/tables', function(req, res){
     res.sendFile(path.join(__dirname, 'tables.html'));
 })
-
-
-
 
 
 
@@ -68,6 +65,7 @@ app.get('/listView', function(req, res){
 app.listen(PORT, function(){
     console.log('App listening on PORT ' + PORT);
 })
+
 
 
 // Search for Specific Character (or all characters) - provides JSON
@@ -87,4 +85,18 @@ app.get('/api/:customer?', function(req, res){
     else{
         res.json(customer);
     }
+})
+
+
+// Create New customer - takes in JSON input
+app.post('/api/new', function(req, res){
+
+    var newCustomer = req.body;
+    newcharacter.routeName = newCustomer.name.replace(/\s+/g, '').toLowerCase()
+
+    console.log(newCustomer);
+
+    characters.push(newCustomer);
+
+    res.json(newCustomer);
 })
